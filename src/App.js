@@ -1,4 +1,4 @@
-import './App.css';
+import React from 'react';
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import {useState} from "react";
@@ -34,6 +34,7 @@ function App() {
 	const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
 	const addExpenseHandler = expense => {
+		if(typeof expense.date === "string") expense.date = new Date(expense.date);
 		setExpenses(prev => [expense,...prev] )
 	}
 
